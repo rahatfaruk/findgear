@@ -9,7 +9,7 @@ function Register() {
   const { register, handleSubmit, formState: {errors: formErr} } = useForm()
   const navigate = useNavigate()
 
-  // handle form submit
+  // create new user on form submit
   const onSubmit = async (data) => {
     // create user
     try {
