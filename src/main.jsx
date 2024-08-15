@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import Register from './pages/Register.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
+import Login from './pages/Login.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />
+      },
+      {
+        path: 'login',
+        element: <Login />
       }
     ]
   }

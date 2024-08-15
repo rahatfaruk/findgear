@@ -38,15 +38,12 @@ function Navbar() {
           <h1 className='text-2xl'><Link to={'/'} className="text-primary font-semibold">FindGear</Link></h1>
         </div>
 
-        {/* profile photo || register,login btn ++ nav-toggler */}
+        {/* profile info || login btn && nav-toggler */}
         <div className="flex items-center justify-end md:order-1 gap-4">
           {user ?
             <div className="flex gap-2 items-center">
-              <figure className="w-9 p-0.5 border rounded-full border-primary" title={user.email}>
-                <img src={user.photoURL} alt="" className="w-full rounded-full shadow-md" />
-              </figure>
-
-              <div className='flex flex-col items-center gap-2'>
+              <div className='flex items-center gap-2'>
+                <p className="font-semibold text-primary">{user.displayName}</p>
                 <button className="px-3 py-1 rounded-md text-white bg-red-800 hover:opacity-90" onClick={handleLogout}>Logout</button>
               </div>
             </div>

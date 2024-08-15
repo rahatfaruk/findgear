@@ -6,7 +6,6 @@ import Navbar from "./comps/Navbar";
 function App() {
   return (  
     <div>
-      {/* <h1 className="bg-blue-200 text-primary">App</h1> */}
       <Navbar />
       <Outlet />
 
