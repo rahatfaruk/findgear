@@ -1,10 +1,11 @@
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import Register from './pages/Register.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import Login from './pages/Login.jsx'
+import ProductsPage from './pages/Products'
 
 const router = createBrowserRouter([
   {
@@ -12,12 +13,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        index: true,
+        element: <Navigate to={'products'} replace />
+      },
+      {
         path: 'register',
         element: <Register />
       },
       {
         path: 'login',
         element: <Login />
+      },
+      {
+        path: 'products',
+        element: <ProductsPage />
       }
     ]
   }
