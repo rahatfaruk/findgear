@@ -1,10 +1,12 @@
 import Products from "./Products";
 import SearchForm from "./SearchForm";
+import SortNdFilter from "./SortNdFilter";
 
 function ProductsPage() {
   return (  
     <div>
       <SectionHeader title={"All Products"} />
+      <SortNdFilter />
       <SearchForm />
       <Products />
     </div>
