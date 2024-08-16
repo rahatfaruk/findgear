@@ -5,7 +5,8 @@ import SortNdFilter from "./SortNdFilter";
 
 function ProductsPage() {
   const [query, setQuery] = useState({})
-  console.log('query', query);
+  const queryStr = `?search=${query.search || ""}&sort=${query.sort || ""}&priceMin=${query.priceMin || ""}&priceMax=${query.priceMax || ""}&brands=${query.brands?.join('+') || ""}&category=${query.category || ""}`;
+  console.log(queryStr);
   
 
   return (  

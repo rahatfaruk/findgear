@@ -15,11 +15,29 @@ function SortNdFilter({ query, setQuery }) {
 
     setQuery( {...query, priceMin, priceMax} )
   }
-
+  
   // update query onChange brand
   const handleChangeBrand = e => {
     const {name, checked} = e.target    
-    setQuery({...query, brands: {...query.brands, [name]:checked}})
+
+    setQuery(prevQuery => {
+      const {brands} = prevQuery
+      let updatedBrands;
+
+      // create or update brands array
+      if (checked) {
+        updatedBrands = brands ? [...brands, name] : [name]
+      } else {
+        updatedBrands = brands ? brands.filter(brand => brand !== name) : []
+      }
+
+      return {...prevQuery, brands: updatedBrands}
+    })
+  }
+
+  // update query onChange category
+  const handleChangeCategory = e => {
+    setQuery( {...query, category: e.target.value} )
   }
   
 
@@ -46,19 +64,46 @@ function SortNdFilter({ query, setQuery }) {
       <div className="bg-gray-100 shadow p-3 rounded mb-3">
         <h3 className="text-lg font-semibold mb-1.5 text-primary">Brand Name</h3>
         <label className="flex gap-2 mb-1">
-          <input type="checkbox" name="apple" checked={query.brands?.apple || false} onChange={handleChangeBrand} />
+          <input type="checkbox" name="apple" checked={query.brands?.includes('apple') || false} onChange={handleChangeBrand} />
           <span>apple</span>
         </label>
         <label className="flex gap-2 mb-1">
-          <input type="checkbox" name="samsung" checked={query.brands?.samsung || false} onChange={handleChangeBrand} />
+          <input type="checkbox" name="samsung" checked={query.brands?.includes('samsung') || false} onChange={handleChangeBrand} />
           <span>samsung</span>
+        </label>
+        <label className="flex gap-2 mb-1">
+          <input type="checkbox" name="xiaomi" checked={query.brands?.includes('xiaomi') || false} onChange={handleChangeBrand} />
+          <span>xiaomi</span>
+        </label>
+        <label className="flex gap-2 mb-1">
+          <input type="checkbox" name="hp" checked={query.brands?.includes('hp') || false} onChange={handleChangeBrand} />
+          <span>hp</span>
+        </label>
+        <label className="flex gap-2 mb-1">
+          <input type="checkbox" name="lenovo" checked={query.brands?.includes('lenovo') || false} onChange={handleChangeBrand} />
+          <span>lenovo</span>
         </label>
       </div>
 
       {/* unit: category name */}
       <div className="bg-gray-100 shadow p-3 rounded mb-3">
         <h3 className="text-lg font-semibold mb-1.5 text-primary">Category Name</h3>
-        
+        <label className="flex gap-2 mb-1">
+          <input type="radio" name="category" value="laptop" checked={query.category==="laptop"} onChange={handleChangeCategory} />
+          <span>laptop</span>
+        </label>
+        <label className="flex gap-2 mb-1">
+          <input type="radio" name="category" value="phone" checked={query.category==="phone"} onChange={handleChangeCategory} />
+          <span>phone</span>
+        </label>
+        <label className="flex gap-2 mb-1">
+          <input type="radio" name="category" value="gadget" checked={query.category==="gadget"} onChange={handleChangeCategory} />
+          <span>gadget</span>
+        </label>
+        <label className="flex gap-2 mb-1">
+          <input type="radio" name="category" value="monitor" checked={query.category==="monitor"} onChange={handleChangeCategory} />
+          <span>monitor</span>
+        </label>
       </div>
 
       {/* unit: price range */}
