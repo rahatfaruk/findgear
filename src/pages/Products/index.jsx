@@ -2,10 +2,15 @@ import { useState } from "react";
 import Products from "./Products";
 import SearchForm from "./SearchForm";
 import SortNdFilter from "./SortNdFilter";
+import Pagination from "./Pagination";
 
 function ProductsPage() {
   const [query, setQuery] = useState({})
-  const queryStr = `?search=${query.search || ""}&sort=${query.sort || ""}&priceMin=${query.priceMin || ""}&priceMax=${query.priceMax || ""}&brands=${query.brands?.join('+') || ""}&category=${query.category || ""}`;
+  const [currentPage, setCurrentPage] = useState(1)
+  const limit = 10
+  const totalPages = 3
+
+  const queryStr = `?search=${query.search || ""}&sort=${query.sort || ""}&priceMin=${query.priceMin || ""}&priceMax=${query.priceMax || ""}&brands=${query.brands?.join('+') || ""}&category=${query.category || ""}&currPage=${currentPage}&limit=${limit}`;
   console.log(queryStr);
   
 
@@ -15,6 +20,7 @@ function ProductsPage() {
       <SortNdFilter query={query} setQuery={setQuery} />
       <SearchForm query={query} setQuery={setQuery} />
       <Products />
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
     </div>
   );
 }
