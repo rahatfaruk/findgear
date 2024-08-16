@@ -1,10 +1,11 @@
 import { Search } from "react-bootstrap-icons";
 
-function SearchForm() {
+function SearchForm({ query, setQuery }) {
   const handleSearch = e => {
     e.preventDefault()
 
-    const searchText = e.target.searchInp.value
+    const search = e.target.searchInp.value
+    setQuery({ ...query, search })
   }
 
   return (

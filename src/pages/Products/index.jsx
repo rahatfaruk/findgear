@@ -1,13 +1,18 @@
+import { useState } from "react";
 import Products from "./Products";
 import SearchForm from "./SearchForm";
 import SortNdFilter from "./SortNdFilter";
 
 function ProductsPage() {
+  const [query, setQuery] = useState({})
+  console.log('query', query);
+  
+
   return (  
     <div>
       <SectionHeader title={"All Products"} />
-      <SortNdFilter />
-      <SearchForm />
+      <SortNdFilter query={query} setQuery={setQuery} />
+      <SearchForm query={query} setQuery={setQuery} />
       <Products />
     </div>
   );
