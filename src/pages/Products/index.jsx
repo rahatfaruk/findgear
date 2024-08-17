@@ -30,10 +30,18 @@ function ProductsPage() {
   return (  
     <div>
       <SectionHeader title={"All Products"} />
-      <SortNdFilter query={query} setQuery={setQuery} />
-      <SearchForm query={query} setQuery={setQuery} />
-      <Products products={products} />
-      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
+
+      <section className="px-4 py-8">
+        <div className="max-w-screen-xl mx-auto grid lg:grid-cols-[300px_1fr] gap-6">
+          <SortNdFilter query={query} setQuery={setQuery} />
+          <main>
+            <SearchForm query={query} setQuery={setQuery} />
+            <Products products={products} />
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
+          </main>
+        </div>
+      </section>    
+
     </div>
   );
 }

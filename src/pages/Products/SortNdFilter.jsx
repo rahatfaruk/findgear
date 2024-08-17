@@ -42,7 +42,7 @@ function SortNdFilter({ query, setQuery }) {
   
 
   return (  
-    <aside className="px-4">
+    <aside>
       {/* unit: sort */}
       <div className="bg-gray-100 shadow p-3 rounded mb-3">
         <h3 className="text-lg font-semibold mb-1.5 text-primary">Sort By</h3>
@@ -110,9 +110,13 @@ function SortNdFilter({ query, setQuery }) {
       <div className="bg-gray-100 shadow p-3 rounded mb-3">
         <h3 className="text-lg font-semibold mb-1.5 text-primary">Price range</h3>
         <form onSubmit={handlePriceRange} className="flex gap-2">
-          <input type="number" name="priceMin" className="min-w-0 px-2 py-1 border rounded" placeholder="min" /> 
+          <div>
+            <input type="number" name="priceMin" className="w-full px-2 py-1 border rounded" placeholder="min" /> 
+          </div>
           <span> - </span>
-          <input type="number" name="priceMax" className="min-w-0 px-2 py-1 border rounded" placeholder="max" />
+          <div>
+            <input type="number" name="priceMax" className="w-full px-2 py-1 border rounded" placeholder="max" />
+          </div>
           <button className="inline-block px-3 py-1 rounded-md text-white bg-primary hover:opacity-90"> <PlayFill/> </button>
         </form>
       </div>
